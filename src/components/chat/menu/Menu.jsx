@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 
 //Components
 import Header from "./Header";
+import Search from "./Search";
 
 const Menu=()=>{
 
@@ -10,6 +11,7 @@ const Menu=()=>{
 
       <Box>
         <Header/>
+        <Search/>
       </Box>
     );
 }

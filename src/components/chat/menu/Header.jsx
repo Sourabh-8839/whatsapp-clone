@@ -1,12 +1,16 @@
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { AccountContext } from "../../../context/AccountProvider";
 import { Box,styled} from "@mui/material";
 
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 import MessageIcon from '@mui/icons-material/Message';
 import Diversity1Icon from '@mui/icons-material/Diversity1';
+
+//componets
+import HeaderMenu from "./HeaderMenu";
+import ProfileInfo from '../Drawer/ProfileInfo';
 
 const Component =styled(Box)`
     height:48px;
@@ -40,21 +44,30 @@ margin-left:auto;
 
 `
 
+
 const Header=()=>{
 
     const {account}=useContext(AccountContext);
 
+    const [openDrawer,setOpenDrawer] = useState(false);
+
+    
+    const toggleDrawer=()=>{
+       
+        setOpenDrawer(true);
+    }
+
     return (
        <>
        <Component>
-        <Image src={account.picture} alt="" srcset="" />
-
+        <Image src={account.picture} alt="dp" srcset="" onClick={toggleDrawer} />
         <Options>
             <Diversity1Icon/>
             <MessageIcon/>
-            <MoreVertIcon/>
+            <HeaderMenu setOpenDrawer={setOpenDrawer}/>
         </Options>
        </Component>
+       <ProfileInfo open={openDrawer} setOpen={setOpenDrawer}/>
        </>
     )
 }

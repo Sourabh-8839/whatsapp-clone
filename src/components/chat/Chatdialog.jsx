@@ -13,10 +13,12 @@ const dialogStyle = {
     margin:'25px',
     boxShadow:'none',
     borderRadius:'0',
+    
 };
 
 const Container =styled(Box)`
   display:flex;
+  over-flow:hidden;
   
 `;
 
