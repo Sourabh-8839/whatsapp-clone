@@ -9,7 +9,11 @@ import { qrCodeImage } from '../../Constants/Constants';
 
 import { AccountContext } from '../../context/AccountProvider';
 
+import { addUser } from '../../service/api';
+
 import jwt_decode from "jwt-decode";
+
+// import {addUser}  from '../../service/api.js';
 
 const dialogStyle ={
   height:'96%',
@@ -59,8 +63,9 @@ const Login = () => {
   const onLoginSuccess=(res)=>{
       const decode = jwt_decode(res.credential);
 
+      console.log(decode);
       setAccount(decode);
-      
+      addUser(decode);
   }
 
   const onLoginError =(err)=>{

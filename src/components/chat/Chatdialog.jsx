@@ -4,6 +4,9 @@ import { Dialog ,Box,styled} from "@mui/material";
 import Menu from "./menu/Menu";
 
 import EmptyChat from "./emptyChat/EmptyChat";
+import ChatBox from "./emptyChat/ChatBox";
+import { useContext } from "react";
+import { AccountContext } from "../../context/AccountProvider";
 
 const dialogStyle = {
     height:'95%',
@@ -18,7 +21,7 @@ const dialogStyle = {
 
 const Container =styled(Box)`
   display:flex;
-  over-flow:hidden;
+  overflow:hidden;
   
 `;
 
@@ -39,6 +42,10 @@ const RightComponent =styled(Box)`
 
 
 const ChatDialog=()=>{
+
+  const {person} = useContext(AccountContext);
+
+
     return(
       <Dialog
       open={true}
@@ -52,7 +59,9 @@ const ChatDialog=()=>{
           </LeftComponent>
 
           <RightComponent>
-            <EmptyChat/>
+          
+            {Object.keys(person).length ? <ChatBox/>:<EmptyChat/>}
+            
           </RightComponent>
 
         </Container>

@@ -38,9 +38,6 @@ const ProfileInfo=({open,setOpen})=>{
         setOpen(false);
     };
 
-    // console.log(open);
-    // console.log(setOpen);
-
     return(
         <Drawer
         open={open}
